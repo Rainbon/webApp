@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fullPage test</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .component{
+            width:50%;
+            height: 50px;
+            margin-bottom: 20px;
+            background-color: #cccccc;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="h5">
+    <div class="page section" id="page-1">
+        <div class="component log">log</div>
+        <div class="component slogan">slogan</div>
+    </div>
+    <div class="page section" id="page-2">
+        <div class="component esc">描述分析</div>
+    </div>
+    <div class="page section" id="page-3">
+        <div class="component bar">柱状图</div>
+    </div>
+</div>
+<script src="../js/lib/jquery.js"></script>
+<script src="../js/lib/jquery.fullPage.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $('#h5').fullpage({
+            'sectionsColor': ['#254875', '#00FF00', '#254587'],
+            'onLeave':function (index,nextIndex,direction) {
+                $('#h5').find('.page').eq(index-1).trigger('onLeave')
+            },
+            'afterLoad':function (anchorLink,index) {
+                $('#h5').find('.page').eq(index-1).trigger('onLoad')
+            }
+        })
+//        triggerHandler（只影响第一个匹配元素） 和return false 都可以阻止事件向上传递 所以此处适合用 return false
+        $('.page').on({
+            'onLeave':function () {
+                console.log($(this).attr('id'),'===>','onLeave');
+//                $(this).find('.component').triggerHandler('onLeave');
+                $(this).find('.component').trigger('onLeave');
+            },
+            'onLoad':function () {
+                console.log($(this).attr('id'),'===>','onLoad');
+//                $(this).find('.component').triggerHandler('onLoad');
+                $(this).find('.component').trigger('onLoad');
+            }
+        })
+        $('.component').on({
+            'onLeave':function () {
+                $(this).fadeOut();
+                return false
+            },
+            'onLoad':function () {
+                $(this).fadeIn();
+                return false
+            }
+        })
+//        $('.page').on('onLeave',function () {
+//            console.log($(this).attr('id'),'===>','onLeave')
+//        })
+//        $('.page').on('onLoad',function () {
+//            console.log($(this).attr('id'),'===>','onLoad')
+//        })
+    })
+</script>
+</body>
+</html>
