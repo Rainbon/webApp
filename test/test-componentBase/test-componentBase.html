@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test-componentBase</title>
-    <link rel="stylesheet" href="H5ComponetBase.css">
+    <link rel="stylesheet" href="H5ComponentBase.css">
     <style>
         body{
             margin:0;
@@ -23,6 +23,18 @@
             top:50%;
             margin: -270px 0 0 -170px;
         }
+        /*.h5_component_base{*/
+            /*transition: all 1s;*/
+        /*}*/
+        /*.h5_component_base_leave{*/
+            /*bottom: 0;*/
+            /*opacity:0;*/
+        /*}*/
+        /*.h5_component_base_load{*/
+            /*bottom: 80px;*/
+            /*opacity:1;*/
+        /*}*/
+
     </style>
 </head>
 <body>
@@ -30,7 +42,7 @@
 
 </div>
 <script src="../../js/lib/jquery.js"></script>
-<script src="H5ComponetBase.js"></script>
+<script src="H5ComponentBase.js"></script>
 <script>
     var cfg = {
         type: 'base',
@@ -39,65 +51,27 @@
         height: '306',
 
         bg: '../../imgs/p1_people.png',
+
         css: {
-            left:20,
-            top:50,
-            opacity:0
+            bottom:0,
+            opacity: 0
         },
-        animateIn:{top:50,opacity:1},
-        animateOut:{top:150,opacity:0},
-        center: true,
+
+        animateIn: { bottom: 80,opacity:1},
+        animateOut: { bottom: 0,opacity:0},
+        center :true
 
     }
     var h5 = new H5ComponentBase('myName',cfg);
     $('.iphone').append(h5);
 
-//    var leave = true;
-//    $('body').click(function () {
-//        leave = !leave;
-//        $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad')
-//    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var leave = true;
+    $('body').click(function () {
+        leave = !leave;
+//        console.log('touched');
+        $('.h5_component').trigger(leave ? 'onLeave': 'onLoad');
+    })
 
 
 </script>

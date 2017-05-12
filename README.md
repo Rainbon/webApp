@@ -10,4 +10,25 @@ triggerHandler() 方法触发被选元素的指定事件类型。但不会执行
 
 **在trigger 的函数中最后添加 `return false` 也可以阻止冒泡**
 
-### 
+### test-valid test-componentBase test-H5内容
+完成 
+* 内容组织、添加页面、添加组件
+* 整合fullPage支持页面切换
+* 链式调用
+
+### $.extend()的用法 使方法参数更灵活
+在做ＪＳ开发时，我们将第三方复杂的插件进行封装，然后对外公开一个很简单的方法接口，这是开发时常用的方法，在ＪＳ里，我们的方法参数通常使用JQ的$.extend 扩展方法来实现
+
+``````
+function extend(arr) {
+    arr = $.extend({ name: 'zzl', sex: 'male', age: 31 }, arr || {});
+    alert("[Name:]" + arr.name + "[Sex:]" + arr.sex + "[Age:]" + arr.age);
+}
+``````
+如果我们没有为arr指定值，它会把默认的值进行输出，如果我们为arr对象的某个属性赋值，它只修改了指定属性的值，对象的其它值保持为原来的默认值.
+
+````
+<a href="#" onclick="extend();return false;">extends</a>
+<a href="#" onclick="extend({name:'占占'});return false;">extends</a>
+````
+
