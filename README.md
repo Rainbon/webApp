@@ -32,3 +32,5 @@ function extend(arr) {
 <a href="#" onclick="extend({name:'占占'});return false;">extends</a>
 ````
 
+
+

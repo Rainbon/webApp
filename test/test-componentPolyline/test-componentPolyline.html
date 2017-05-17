@@ -11,8 +11,8 @@
     <script src="../../js/lib/jquery.js"></script>
     <script src="../test-componentBase/H5ComponentBase.js"></script>
 
-    <link rel="stylesheet" href="H5ComponentBar.css">
-    <script src="H5ComponentBar.js"></script>
+    <link rel="stylesheet" href="H5ComponentPolyline.css">
+    <script src="H5ComponentPolyline.js"></script>
 
     <style>
         body{
@@ -51,33 +51,32 @@
 
 <script>
     var cfg = {
-        type: 'bar',
+        type: 'polyline',
         width: '530',
         height: '600',
         css: {
-            top:100,
+            top:50,
             opacity: 0
         },
         data:[
-            ['Javascript',.4,'#ff7676'],
-            ['Html/Css',.2],
-            ['jQuery',.03],
-            ['Bootstrap',.05],
+            ['js',.4,'#ff7676'],
+            ['Html',.2],
+            ['css',.3],
+            ['vue',.09],
             ['Html5',.08],
-            ['CSS3',.04],
-            ['AngularJs',.2]
+
         ],
         animateIn:{
-            top:200,
+            top:100,
             opacity: 1
         },
         animateOut:{
-            top:100,
+            top:50,
             opacity:0
         },
         center :true
     }
-    var h5 = new H5ComponentBar('myBarComponent',cfg);
+    var h5 = new H5ComponentPolyline('myBarComponent',cfg);
     $('.iphone').append(h5);
 
 
